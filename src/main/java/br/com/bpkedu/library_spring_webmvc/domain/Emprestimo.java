@@ -1,8 +1,9 @@
 package br.com.bpkedu.library_spring_webmvc.domain;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Emprestimo {
@@ -14,14 +15,17 @@ public class Emprestimo {
     @ManyToOne
     private Usuario usuario;
 
-    @ManyToOne
-    private Livro livro;
+    // Remova este atributo, pois os livros vêm via EmprestimoItem
+    // private Livro livro;
 
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucaoPrevista;
     private LocalDate dataDevolucaoReal;
 
     private Boolean devolvido;
+
+    @OneToMany(mappedBy = "emprestimo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EmprestimoItem> itens = new ArrayList<>(); // inicialize aqui
 
     public Long getId() {
         return id;
@@ -39,6 +43,7 @@ public class Emprestimo {
         this.usuario = usuario;
     }
 
+    /*
     public Livro getLivro() {
         return livro;
     }
@@ -46,6 +51,7 @@ public class Emprestimo {
     public void setLivro(Livro livro) {
         this.livro = livro;
     }
+    */
 
     public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
@@ -77,5 +83,13 @@ public class Emprestimo {
 
     public void setDevolvido(Boolean devolvido) {
         this.devolvido = devolvido;
+    }
+
+    public List<EmprestimoItem> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<EmprestimoItem> itens) {
+        this.itens = itens;
     }
 }

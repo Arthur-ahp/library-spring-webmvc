@@ -1,6 +1,5 @@
 package br.com.bpkedu.library_spring_webmvc.domain;
 
-
 import jakarta.persistence.*;
 
 @Entity
@@ -16,10 +15,9 @@ public class Usuario {
     private String endereco;
     private String telefone;
 
-<<<<<<< HEAD
-    public Long getId() {
-        return id;
-=======
+    public Usuario() {
+    }
+
     public Usuario(Long id) {
         this.id = id;
     }
@@ -27,10 +25,10 @@ public class Usuario {
     public Usuario(String nome, String senha) {
         this.nome = nome;
         this.senha = senha;
->>>>>>> 5ed4c5d (Criação inicial da tela de Empréstimo)
     }
 
-    public Usuario() {
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
@@ -56,12 +54,12 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" +
-            "id=" + id +
-            ", nome='" + nome + '\'' +
-            ", senha='" + senha + '\'' +
-            ", email='" + email + '\'' +
-            ", endereco='" + endereco + '\'' +
-            ", telefone='" + telefone + '\'' +
-            '}';
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", senha='" + senha + '\'' +
+                ", email='" + email + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", telefone='" + telefone + '\'' +
+                '}';
     }
 }
