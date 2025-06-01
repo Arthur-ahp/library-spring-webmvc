@@ -16,8 +16,21 @@ public class Usuario {
     private String endereco;
     private String telefone;
 
+<<<<<<< HEAD
     public Long getId() {
         return id;
+=======
+    public Usuario(Long id) {
+        this.id = id;
+    }
+
+    public Usuario(String nome, String senha) {
+        this.nome = nome;
+        this.senha = senha;
+>>>>>>> 5ed4c5d (Criação inicial da tela de Empréstimo)
+    }
+
+    public Usuario() {
     }
 
     public String getNome() {
